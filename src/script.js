@@ -17,13 +17,15 @@ const scene = new THREE.Scene()
 
 // Galaxy
 const parameters = {}
-parameters.count = 10000;
+parameters.count = 100000;
 parameters.size = 0.01;
 parameters.radius = 5;
 parameters.branches = 3;
 parameters.spin = 1;
 parameters.randomness = 0.2;
 parameters.randomnessPower = 3
+parameters.insideColor = '#ff6030'
+parameters.outsideColor = '#1b3984
 
 let geometry = null
 let material = null
@@ -72,7 +74,8 @@ const generateGalaxy = () =>  {
         size: parameters.size,
         sizeAttenuation: true,
         depthWrite: false,
-        blending: THREE.AdditiveBlending
+        blending: THREE.AdditiveBlending,
+        color:'#ff5588'
     })
 
     /**
@@ -90,6 +93,9 @@ gui.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGa
 gui.add(parameters, 'spin').min(-5).max(5).step(0.001).onFinishChange(generateGalaxy)
 gui.add(parameters, 'randomness').min(0).max(2).step(0.001).onFinishChange(generateGalaxy)
 gui.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateGalaxy)
+gui.addColor(parameters, 'insideColor').onFinishChange(generateGalaxy)
+gui.addColor(parameters, 'outsideColor').onFinishChange(generateGalaxy)
+
 generateGalaxy()
 
 /**
