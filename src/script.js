@@ -53,10 +53,14 @@ const generateGalaxy = () =>  {
         const radius = Math.random() * parameters.radius
         const spinAngle = radius * parameters.spin
         const branchAngle = (i % parameters.branches) / parameters.branches * Math.PI * 2 // 20 % 3 / (3 let the points not really on the branch) 
+        
+        const randomX = (Math.random() - 0.5) * parameters.randomness
+        const randomY = (Math.random() - 0.5) * parameters.randomness
+        const randomZ = (Math.random() - 0.5) * parameters.randomness
 
-        positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius
-        positions[i3 + 1] = 0
-        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius
+        positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius + randomX
+        positions[i3 + 1] = randomY
+        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
