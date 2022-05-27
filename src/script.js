@@ -73,7 +73,7 @@ const generateGalaxy = () =>  {
 
         // Color
         const mixedColor = colorInside.clone() // not change the base colorInside
-        mixedColor.lerp(colorOutside, 0.5)
+        mixedColor.lerp(colorOutside, radius / parameters.radius) // second para put 0~1
 
         // Colors
         colors[i3    ] = mixedColor.r
