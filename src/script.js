@@ -103,7 +103,7 @@ const generateGalaxy = () =>  {
         vertexShader: galaxyVertexShader,
         fragmentShader: galaxyFragmentShader,
         uniforms: {
-            uSize: { value: 8 }
+            uSize: { value: 8 * renderer.getPixelRatio()}
         }
     })
 
@@ -124,7 +124,7 @@ gui.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange
 gui.addColor(parameters, 'insideColor').onFinishChange(generateGalaxy)
 gui.addColor(parameters, 'outsideColor').onFinishChange(generateGalaxy)
 
-generateGalaxy()
+
 
 /**
  * Sizes
@@ -171,6 +171,12 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+/**
+ * Generate the first galaxy
+ */
+ generateGalaxy()
+
 
 /**
  * Animate
