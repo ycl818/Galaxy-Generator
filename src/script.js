@@ -96,6 +96,9 @@ const generateGalaxy = () =>  {
         vertexColors: true,
         vertexShader: galaxyVertexShader,
         fragmentShader: galaxyFragmentShader,
+        uniforms: {
+            uSize: { value: 8 }
+        }
     })
 
     /**
